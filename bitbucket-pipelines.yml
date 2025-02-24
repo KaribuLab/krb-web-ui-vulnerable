@@ -1,0 +1,12 @@
+image: node:22.0.0
+pipelines:
+  branches:
+    main:
+      - step:
+          name: deploy
+          script:
+            - |
+              npm ci
+              npm run deploy
+options:
+  docker: true
