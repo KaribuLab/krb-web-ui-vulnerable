@@ -7,6 +7,7 @@ pipelines:
           script:
             - |
               echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${MY_SECRET_API_KEY}" > .env
+              echo "NUXT_PUBLIC_BASE_URL=https://web-ui-vulnerable-bitbucket.netlify.app" >> .env
               cat .env
               export NODE_ENV=production
               npm i -g netlify-cli@19.0.0
