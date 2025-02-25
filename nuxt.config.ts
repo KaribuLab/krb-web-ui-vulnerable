@@ -1,3 +1,4 @@
+console.log('process.env.MY_SECRET_API_KEY', process.env.MY_SECRET_API_KEY)
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
