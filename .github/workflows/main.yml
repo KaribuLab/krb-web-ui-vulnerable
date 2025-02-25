@@ -26,8 +26,4 @@ jobs:
           export NODE_ENV=production
           npm i -g netlify-cli@19.0.0
           npm ci
-          netlify build  --context production
-          echo "======================================================="
-          ls -la dist
-          echo "======================================================="
-          netlify deploy --prod
+          netlify deploy --build --context production --prod --dist=dist/.output/public
