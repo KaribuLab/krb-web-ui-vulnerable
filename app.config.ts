@@ -3,5 +3,6 @@ const env = {
 }
 delete env.NETLIFY_AUTH_TOKEN
 delete env.NETLIFY_SITE_ID
-
-export default defineAppConfig(env)
+const appConfig = defineAppConfig(env)
+console.log('app.config.ts:', appConfig)
+export default useAppConfig
