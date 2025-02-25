@@ -7,11 +7,8 @@ pipelines:
           script:
             - |
               export MY_SECRET_API_KEY=$MY_SECRET_API_KEY
-              env | grep MY_SECRET_API_KEY > .env
               npm i -g netlify-cli@19.0.0
               npm ci
-              netlify build
-              ls -la dist
               netlify deploy --build --context production --prod --dir=.output/public
 options:
   docker: true

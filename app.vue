@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Test</h1>
-    <h2>My secret{{ mySecretKey }}</h2>
+    <h2>My secret: {{ mySecretKey }}</h2>
   </div>
 </template>
 
