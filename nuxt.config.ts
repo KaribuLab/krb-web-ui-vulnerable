@@ -4,9 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: process.env.NODE_ENV === 'development' },
   runtimeConfig: {
-    public: {
-      MY_SECRET_API_KEY: process.env.NUXT_PUBLIC_SECRET
-    }
+    mySecretKey: process.env.MY_SECRET_API_KEY,
   },
   // Agregar util.js en el head del documento HTML con defer para ejecutarse cuando el DOM esté cargado
   app: {
