@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 const mySecretKey = ref<string>('')
-const runtimeConfig = useRuntimeConfig()
-console.log('My secret is:', runtimeConfig.public.mySecretKey)
-mySecretKey.value = runtimeConfig.public.mySecretKey as string
+const appConfig = useAppConfig()
+console.log('My secret is:', appConfig.MY_SECRET_API_KEY)
+mySecretKey.value = appConfig.MY_SECRET_API_KEY as string
 </script>
