@@ -20,7 +20,8 @@ jobs:
       - name: deploy
         id: deploy
         run: |
-          echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}" > .env
+          export MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}
+          echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${MY_SECRET_API_KEY}" > .env
           export NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }}
           export NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }}
           export NODE_ENV=production
