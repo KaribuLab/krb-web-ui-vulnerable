@@ -8,4 +8,4 @@ const appConfig = defineAppConfig({
     mySecretKey: env.MY_SECRET_API_KEY,
 })
 console.log('app.config.ts:', appConfig)
-export default useAppConfig
+export default appConfig
