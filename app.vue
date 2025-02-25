@@ -8,6 +8,6 @@
 <script lang="ts" setup>
 const mySecretKey = ref<string>('')
 const runtimeConfig = useRuntimeConfig()
-console.log('My secret is:', runtimeConfig.mySecretKey)
-mySecretKey.value = runtimeConfig.mySecretKey as string
+console.log('My secret is:', runtimeConfig.public.mySecretKey)
+mySecretKey.value = runtimeConfig.public.mySecretKey as string
 </script>
