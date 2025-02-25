@@ -10,6 +10,6 @@ pipelines:
               npm i -g netlify-cli@19.0.0
               npm ci
               netlify build
-              netlify deploy --dir=dist --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_API_TOKEN
+              netlify deploy --prod
 options:
   docker: true
