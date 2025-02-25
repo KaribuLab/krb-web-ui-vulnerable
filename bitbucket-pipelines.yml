@@ -12,6 +12,6 @@ pipelines:
               npm ci
               netlify build
               ls -la dist
-              netlify deploy --prod --context production
+              netlify deploy --build --context production --prod --dir=.output/public
 options:
   docker: true
