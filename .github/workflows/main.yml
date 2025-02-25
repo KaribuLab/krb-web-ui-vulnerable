@@ -20,6 +20,7 @@ jobs:
       - name: deploy
         id: deploy
         run: |
+          export NUXT_PUBLIC_MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}
           export NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }}
           export NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }}
           export NODE_ENV=production
