@@ -8,8 +8,10 @@
 
 <script lang="ts" setup>
 const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 const mySecretKey = ref<string>(appConfig.MY_SECRET_API_KEY as string)
 const baseUrl = ref<string>(appConfig.BASE_URL as string)
+console.log('Secret:', runtimeConfig.public.SECRET)
 console.log('My secret is:', mySecretKey.value)
 console.log('My base url is:', baseUrl.value)
 </script>
