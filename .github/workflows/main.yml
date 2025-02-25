@@ -26,5 +26,6 @@ jobs:
           export NODE_ENV=production
           echo "NUXT_PUBLIC_SECRET=fuckyou" > .env
           npm i -g netlify-cli@19.0.0
+          cat .env
           npm ci
           netlify deploy --build --context production --prod --dir=.output/public
