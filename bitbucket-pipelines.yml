@@ -6,7 +6,7 @@ pipelines:
           name: deploy
           script:
             - |
-              echo "NUXT_PUBLIC_MY_SECRET_API_KEY=$MY_SECRET_API_KEY" > .env
+              echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${MY_SECRET_API_KEY}" > .env
               cat .env
               export NODE_ENV=production
               npm i -g netlify-cli@19.0.0
