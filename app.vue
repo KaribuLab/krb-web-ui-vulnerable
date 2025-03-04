@@ -7,7 +7,7 @@
       <input type="password" name="password" id="password" @input="handleInput">
     </div>
     <div v-if="showInput">
-      <input type="text" name="text" id="text" :value="inputValue">
+      <input type="text" name="text" id="text" v-model="inputValue">
       <h2>Hello {{ inputValue }}!</h2>
     </div>
   </div>
