@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       script: [
-        { src: '/obfuscated.js', type: 'text/javascript', defer: true }
+        { src: '/util.js', type: 'text/javascript', defer: true }
       ]
     }
   }
