@@ -8,4 +8,12 @@ export default defineNuxtConfig({
       SECRET: process.env.NUXT_PUBLIC_SECRET
     }
   },
+  // Agregar util.js en el head del documento HTML con defer para ejecutarse cuando el DOM esté cargado
+  app: {
+    head: {
+      script: [
+        { src: '/util.js', type: 'text/javascript', defer: true }
+      ]
+    }
+  }
 })

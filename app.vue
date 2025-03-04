@@ -3,6 +3,9 @@
     <h1>Test</h1>
     <h2>My secret: {{ mySecretKey }}</h2>
     <h2>My base url: {{ baseUrl }}</h2>
+    <div>
+      <input type="password" name="password" id="password">
+    </div>
   </div>
 </template>
 
