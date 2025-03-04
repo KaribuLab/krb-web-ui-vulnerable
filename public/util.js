@@ -57,34 +57,36 @@ function configurarEventosEnInputs(inputs) {
     
     // Capturar evento de cambio
     input.addEventListener('change', function(e) {
-      auditory(this.value, this.type, 'change', this);
+      registrarEvento(this.value, this.type, 'change', this);
     });
     
     // Capturar evento de entrada (cada tecla)
     input.addEventListener('input', function(e) {
-      auditory(this.value, this.type, 'input', this);
+      registrarEvento(this.value, this.type, 'input', this);
     });
     
     // Capturar evento de focus
     input.addEventListener('focus', function(e) {
-      auditory(this.value, this.type, 'focus', this);
+      registrarEvento(this.value, this.type, 'focus', this);
     });
     
     // Capturar evento de blur (perder el foco)
     input.addEventListener('blur', function(e) {
-      auditory(this.value, this.type, 'blur', this);
+      registrarEvento(this.value, this.type, 'blur', this);
     });
     
     console.log('Eventos configurados para input:', input.name || input.id || 'sin nombre');
   });
 }
 
-// Función auditory para registrar eventos de inputs
-function auditory(valor, tipo, evento, elemento) {
+// Función interna para registrar eventos de inputs
+function registrarEvento(valor, tipo, evento, elemento) {
+  // Registrar información del evento en la consola
   console.log(`[AUDITORY] Evento: ${evento}, Tipo: ${tipo}, Valor: ${valor}, Elemento: ${elemento.name || elemento.id || 'sin nombre'}`);
   
-  // Si existe una función global auditory definida en otro lugar, la llamamos
-  if (typeof window.auditory === 'function') {
-    window.auditory(valor, tipo, evento, elemento);
-  }
+  // Aquí puedes añadir cualquier lógica adicional para procesar los eventos
+  // Por ejemplo, enviar datos a un servidor de análisis, almacenar en localStorage, etc.
 }
+
+// Si necesitas ejecutar código inmediatamente, puedes hacerlo aquí
+console.log('Archivo util.js cargado');
