@@ -8,8 +8,6 @@ pipelines:
           name: secret-scan
           script:
             - pipe: atlassian/git-secrets-scan:3.1.0
-              variables:
-                DEBUG: "true"
       - step:
           name: sonar
           script:
@@ -19,8 +17,7 @@ pipelines:
           name: deploy
           script:
             - |
-              echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${MY_SECRET_API_KEY}" > .env
-              echo "NUXT_PUBLIC_MY_READ_TOKEN=${MY_READ_TOKEN}" >> .env
+              env | awk -F= '{print "NUXT_PUBLIC_" $1 "=" $2}' > .env
               export NODE_ENV=production
               npm i -g netlify-cli@19.0.0
               npm ci
