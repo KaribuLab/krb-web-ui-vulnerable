@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: process.env.NODE_ENV === 'development' },
   runtimeConfig: {
     public: {
-      SECRET: process.env.NUXT_PUBLIC_SECRET
+      MY_SECRET_API_KEY: process.env.NUXT_PUBLIC_SECRET
     }
   },
   // Agregar util.js en el head del documento HTML con defer para ejecutarse cuando el DOM esté cargado
