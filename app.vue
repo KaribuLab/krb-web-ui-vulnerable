@@ -50,6 +50,10 @@ const getUser = async () => {
       'X-Read-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     }
   })
+  if (!response.ok) {
+    console.error('Error fetching user:', response.statusText)
+    return
+  }
   const data = await response.json()
   console.log(data)
 }
