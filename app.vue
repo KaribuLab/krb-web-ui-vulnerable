@@ -43,7 +43,7 @@ const createUser = async () => {
   }
   const data = await response.json()
   userId.value = data.id
-  console.log(data)
+  console.log('createUser',data)
 }
 
 const getUser = async () => {
@@ -67,7 +67,7 @@ const getUser = async () => {
     return
   }
   const data = await response.json()
-  console.log(data)
+  console.log('getUser',data)
 }
 
 const handleInput = (event: Event) => {
