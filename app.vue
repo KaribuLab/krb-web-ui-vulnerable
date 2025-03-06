@@ -8,7 +8,9 @@
     <div v-if="showInput">
       <input type="text" name="text" id="text" v-model="inputValue">
       <h2>Hello {{ inputValue }}!</h2>
-      <button @click="invokeAPI">Invoke API</button>
+      <button @click="createUser">Create User</button>
+      <button @click="getUser">Get User</button>
+      <h2 v-if="userId > 0">User ID: {{ userId }}</h2>
     </div>
   </div>
 </template>
@@ -16,24 +18,40 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
-const mySecretAPIKey = ref<string>(appConfig.MY_SECRET_API_KEY as string)
 const showInput = ref<boolean>(false)
 const baseUrl = ref<string>(appConfig.BASE_URL as string)
 const inputValue = ref<string>('')
+const userId = ref<number>(0)
 if (runtimeConfig.public.MY_SECRET_API_KEY === undefined) {
   console.warn('MY_SECRET_API_KEY is not defined')
 }
 
-const invokeAPI = async () => {
+const createUser = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users',{
     headers: {
-      'Authorization': `Bearer ${mySecretAPIKey.value}`
+      'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`
     },
     method: 'POST',
     body: JSON.stringify({
       name: 'John Doe',
       email: 'john.doe@example.com'
     })
+  })
+  const data = await response.json()
+  userId.value = data.id
+  console.log(data)
+}
+
+const getUser = async () => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId.value}`,{
+    headers: {
+<<<<<<< HEAD
+      'X-Read-Token': runtimeConfig.public.MY_READ_TOKEN as string
+=======
+      'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`,
+      'X-Read-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+>>>>>>> 0eac9a4 (feat: add Authorization header with runtime config secret API key)
+    }
   })
   const data = await response.json()
   console.log(data)
