@@ -50,16 +50,8 @@ const getUser = async () => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId.value}`,{
     method: 'POST',
     headers: {
-<<<<<<< HEAD
-      'X-Read-Token': runtimeConfig.public.MY_READ_TOKEN as string
-=======
       'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`,
-<<<<<<< HEAD
-      'X-Read-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
->>>>>>> 0eac9a4 (feat: add Authorization header with runtime config secret API key)
-=======
       'X-Read-Token': runtimeConfig.public.MY_READ_TOKEN as string
->>>>>>> 825622f (refactor: replace hardcoded read token with runtime configuration)
     }
   })
   if (!response.ok) {
