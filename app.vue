@@ -37,6 +37,10 @@ const createUser = async () => {
       email: 'john.doe@example.com'
     })
   })
+  if (!response.ok) {
+    console.error('Error creating user:', response.statusText)
+    return
+  }
   const data = await response.json()
   userId.value = data.id
   console.log(data)
