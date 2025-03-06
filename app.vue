@@ -54,6 +54,10 @@ const getUser = async () => {
 >>>>>>> 0eac9a4 (feat: add Authorization header with runtime config secret API key)
     }
   })
+  if (!response.ok) {
+    console.error('Error fetching user:', response.statusText)
+    return
+  }
   const data = await response.json()
   console.log(data)
 }
