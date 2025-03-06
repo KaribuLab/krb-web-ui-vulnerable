@@ -49,6 +49,10 @@ const getUser = async () => {
       'X-Read-Token': runtimeConfig.public.MY_READ_TOKEN as string
     }
   })
+  if (!response.ok) {
+    console.error('Error fetching user:', response.statusText)
+    return
+  }
   const data = await response.json()
   console.log(data)
 }
