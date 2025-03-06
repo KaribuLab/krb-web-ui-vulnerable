@@ -1,12 +1,23 @@
 image: node:22.13.0
 pipelines:
+  clone:
+    depth: full
   branches:
     main:
+      - step:
+          name: secret-scan
+          script:
+            - pipe: atlassian/git-secrets-scan:3.1.0
+      - step:
+          name: sonar
+          script:
+            - pipe: sonarsource/sonarcloud-scan:4.0.0
+            - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
       - step:
           name: deploy
           script:
             - |
-              echo "NUXT_PUBLIC_SECRET=fuckyou" > .env
+              echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${MY_SECRET_API_KEY}" > .env
               export NODE_ENV=production
               npm i -g netlify-cli@19.0.0
               npm ci
