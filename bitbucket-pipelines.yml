@@ -8,6 +8,8 @@ pipelines:
           name: secret-scan
           script:
             - pipe: atlassian/git-secrets-scan:3.1.0
+              variables:
+                DEBUG: "true"
       - step:
           name: sonar
           script:
