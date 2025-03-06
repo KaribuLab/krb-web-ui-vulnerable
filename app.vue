@@ -50,6 +50,10 @@ const getUser = async () => {
       'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`
     }
   })
+  if (!response.ok) {
+    console.error('Error fetching user:', response.statusText)
+    return
+  }
   const data = await response.json()
   console.log(data)
 }
