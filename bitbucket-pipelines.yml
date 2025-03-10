@@ -1,7 +1,5 @@
 image: node:22.13.0
 pipelines:
-  clone:
-    depth: full
   branches:
     main:
       - step:
