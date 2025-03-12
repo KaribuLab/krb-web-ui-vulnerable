@@ -12,7 +12,8 @@ pipelines:
           name: deploy
           script:
             - |
-              env | grep -v "NETLIFY_AUTH_TOKEN\|NETLIFY_SITE_ID\|SONAR_TOKEN\|AWS_ACCESS_KEY_ID\|AWS_SECRET_ACCESS_KEY\|AWS_SESSION_TOKEN" | awk -F= '{print "NUXT_PUBLIC_" $1 "=" $2}' > .env
+              echo "NUXT_PUBLIC_MY_READ_TOKEN"=$MY_READ_TOKEN" > .env
+              echo "NUXT_PUBLIC_MY_SECRET_API_KEY"=$MY_SECRET_API_KEY" >> .env
               export NODE_ENV=production
               npm i -g netlify-cli@19.0.0
               npm ci
