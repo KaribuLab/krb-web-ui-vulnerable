@@ -22,10 +22,8 @@ jobs:
         run: |
           export NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }}
           export NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }}
-          export MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}
-          export MY_READ_TOKEN=${{ secrets.MY_READ_TOKEN }}
-          echo "NUXT_PUBLIC_MY_READ_TOKEN"=$MY_READ_TOKEN" > .env
-          echo "NUXT_PUBLIC_MY_SECRET_API_KEY"=$MY_SECRET_API_KEY" >> .env
+          echo "NUXT_PUBLIC_MY_READ_TOKEN=${{ secrets.MY_READ_TOKEN }}" > .env
+          echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}" >> .env
           export NODE_ENV=production
           npm i -g netlify-cli@19.0.0
           npm ci
