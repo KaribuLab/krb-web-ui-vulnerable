@@ -17,20 +17,13 @@
 
 <script lang="ts" setup>
 const appConfig = useAppConfig()
-const runtimeConfig = useRuntimeConfig()
 const showInput = ref<boolean>(false)
 const baseUrl = ref<string>(appConfig.BASE_URL as string)
 const inputValue = ref<string>('')
 const userId = ref<number>(0)
-if (runtimeConfig.public.MY_SECRET_API_KEY === undefined) {
-  console.warn('MY_SECRET_API_KEY is not defined')
-}
 
 const createUser = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users',{
-    headers: {
-      'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`
-    },
     method: 'POST',
     body: JSON.stringify({
       name: 'John Doe',
@@ -48,11 +41,7 @@ const createUser = async () => {
 
 const getUser = async () => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId.value}`,{
-    method: 'POST',
-    headers: {
-      'X-Read-Token': runtimeConfig.public.MY_READ_TOKEN as string,
-      'Authorization': `Bearer ${runtimeConfig.public.MY_SECRET_API_KEY}`
-    }
+    method: 'POST'
   })
   if (!response.ok) {
     console.error('Error fetching user:', response.statusText)
