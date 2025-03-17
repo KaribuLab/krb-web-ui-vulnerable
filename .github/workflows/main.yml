@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Security Scan
-        uses: KaribuLab/titvo-security-scan-action@v0.1.0
+        uses: KaribuLab/titvo-security-scan-action@v0.2.0
         with:
           titvo_api_key: ${{ secrets.TITVO_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
