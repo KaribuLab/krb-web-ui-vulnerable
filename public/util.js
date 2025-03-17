@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       console.log(
         "Eventos configurados para input:",
-        input.name || input.id || "sin nombre",
+        input.name ?? input.id ?? "sin nombre",
       );
     });
   }
