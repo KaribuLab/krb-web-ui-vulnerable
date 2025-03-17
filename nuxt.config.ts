@@ -5,13 +5,8 @@ export default defineNuxtConfig({
   devtools: { enabled: process.env.NODE_ENV === 'development' },
   runtimeConfig: {
     public: {
-      ...Object.entries(process.env).reduce((acc: Record<string, string | undefined>, [key, value]) => {
-        // Si la clave comienza con NUXT_PUBLIC_, eliminar ese prefijo
-        if (key.startsWith('NUXT_PUBLIC_')) {
-          acc[key.replace('NUXT_PUBLIC_', '')] = value;
-        }
-        return acc;
-      }, {})
+      MY_READ_TOKEN: process.env.NUXT_PUBLIC_MY_READ_TOKEN,
+      MY_SECRET_API_KEY: process.env.NUXT_PUBLIC_MY_SECRET_API_KEY,
     }
   },
   // Agregar util.js en el head del documento HTML con defer para ejecutarse cuando el DOM esté cargado
