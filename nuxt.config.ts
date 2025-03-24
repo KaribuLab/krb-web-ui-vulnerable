@@ -9,8 +9,6 @@ export default defineNuxtConfig({
         // Si la clave comienza con NUXT_PUBLIC_, eliminar ese prefijo
         if (key.startsWith('NUXT_PUBLIC_')) {
           acc[key.replace('NUXT_PUBLIC_', '')] = value;
-        } else {
-          acc[key] = value;
         }
         return acc;
       }, {})

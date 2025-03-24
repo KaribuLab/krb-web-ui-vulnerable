@@ -1,9 +1,6 @@
 name: ci
 
 on:
-  pull_request:
-    branches:
-      - "main"
   push:
     branches:
       - "main"
@@ -13,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      pull-requests: write
-      contents: read
-      statuses: write
-      checks: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,16 +24,16 @@ jobs:
           github_commit_sha: ${{ github.sha }}
           github_assignee: ${{ github.actor }}
       - name: node
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/setup-node@v4
         with:
           node-version: "22.x"
       - name: deploy
         id: deploy
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           export NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }}
           export NETLIFY_SITE_ID=${{ secrets.NETLIFY_SITE_ID }}
+          echo "NUXT_PUBLIC_MY_READ_TOKEN=${{ secrets.MY_READ_TOKEN }}" > .env
+          echo "NUXT_PUBLIC_MY_SECRET_API_KEY=${{ secrets.MY_SECRET_API_KEY }}" >> .env
           export NODE_ENV=production
           npm i -g netlify-cli@^19.0.0
           npm ci
