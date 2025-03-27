@@ -10,6 +10,7 @@ pipelines:
             - pipe: karibu-cl/titvo-security-scan-pipe:16
               variables:
                 TITVO_API_KEY: $TITVO_API_KEY
+                NO_FAIL: $TITVO_NO_FAIL
       - step:
           name: deploy
           script:
