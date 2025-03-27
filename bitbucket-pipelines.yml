@@ -7,7 +7,7 @@ pipelines:
       - step:
           name: security-scan
           script:
-            - pipe: karibu/titvo-security-scan-pipe:latest
+            - pipe: karibu/titvo-security-scan-pipe:12
               variables:
                 TITVO_API_KEY: $TITVO_API_KEY
       - step:
