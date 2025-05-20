@@ -5,9 +5,13 @@ pipelines:
   branches:
     main:
       - step:
-          name: secret-scan
+          name: security-scan
           script:
-            - pipe: atlassian/git-secrets-scan:3.1.0
+            - pipe: karibu-cl/titvo-security-scan-pipe:19
+              variables:
+                TITVO_API_KEY: $TITVO_API_KEY
+                TITVO_API_ENDPOINT: $TITVO_API_ENDPOINT
+                NO_FAIL: $TITVO_NO_FAIL
       - step:
           name: deploy
           script:
